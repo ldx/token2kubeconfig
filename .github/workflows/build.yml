@@ -14,9 +14,7 @@ jobs:
         fetch-depth: '0'
     - run: git fetch origin +refs/tags/*:refs/tags/*
     - name: Build binary
-      run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
-        make
+      run: go build
     - name: Create release
       if: startsWith(github.event.ref, 'refs/tags/v')
       id: create_release
